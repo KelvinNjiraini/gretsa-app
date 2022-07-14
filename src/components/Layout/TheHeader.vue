@@ -1,0 +1,106 @@
+<template>
+    <header>
+        <nav>
+            <h1><router-link to="/">Home</router-link></h1>
+            <ul>
+                <li>
+                    <router-link to="/feed">Feed</router-link>
+                </li>
+                <li>
+                    <router-link to="/company">Company page</router-link>
+                </li>
+                <li>
+                    <base-button v-if="isLoggedIn" @click="logout"
+                        >Logout</base-button
+                    >
+                </li>
+            </ul>
+            <ul>
+                <router-link to="/login">Login</router-link>
+                <router-link to="/signup">Signup</router-link>
+            </ul>
+        </nav>
+    </header>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            // isLoggedIn: false,
+        };
+    },
+    computed: {
+        isLoggedIn() {
+            return this.$store.getters.isLoggedIn;
+        },
+    },
+    methods: {
+        // logout() {
+        //     this.$store.dispatch('logout');
+        //     this.$router.replace('/coaches');
+        // }
+    },
+};
+</script>
+<style scoped>
+header {
+    width: 100%;
+    height: 10vh;
+    background-color: #1572a1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header a {
+    text-decoration: none;
+    color: #f5f5f5;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid transparent;
+}
+
+a:active,
+a:hover,
+a.router-link-active {
+    border: 1px solid #f5f5f5;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+h1 a {
+    color: white;
+    margin: 0;
+}
+
+h1 a:hover,
+h1 a:active,
+h1 a.router-link-active {
+    border-color: transparent;
+}
+
+header nav {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.7rem;
+}
+
+header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    margin: 0 0.5rem;
+}
+</style>
